@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ProductType } from "../types/productType";
 
 const productApi = import.meta.env.VITE_BASE_URL + "/api/product";
 const userID = "abcdefg";
@@ -13,10 +14,10 @@ const getProduct = (productID: string) => axios.get(`${productApi}/${productID}`
 const getUserProducts = () => axios.get(`${productApi}/fromUser/${userID}`);
 
 // POST create the product
-const addProduct = () => axios.post(`${productApi}`);
+const addProduct = (newProduct: ProductType) => axios.post(`${productApi}`, newProduct);
 
 // PUT edit the product
-const editProduct = (productID: string) => axios.put(`${productApi}/${productID}`);
+const editProduct = (productID: string, product: ProductType) => axios.put(`${productApi}/${productID}`, product);
 
 // DELETE remove the product
 const removeProduct = (productID: string) => axios.delete(`${productApi}/${productID}`);
