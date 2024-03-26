@@ -93,11 +93,10 @@ const ProductForm = () => {
               alert("You have successfully edit the product!! :)");
             }
           } else {
-            console.log(values);
-            // response = await addProduct(values);
-            // if (response?.status == 201) {
-            //   alert("You have successfully add the product!! :)");
-            // }
+            response = await addProduct(values);
+            if (response?.status == 201) {
+              alert("You have successfully add the product!! :)");
+            }
           }
         } catch (error) {
           console.error(
