@@ -61,7 +61,7 @@ const WishList = () => {
         const response = await getProduct(id);
         setWishListProducts((prevOrderItems) => [
           ...prevOrderItems,
-          response.data,
+          response.data.data,
         ]);
       } catch (err) {
         console.error("Error fetching products: ", err);
