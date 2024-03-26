@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+html,body{font-family:"Lato", sans-serif; font-size:16px; line-height:1.5}
+html{overflow-x:hidden}
+img{vertical-align:middle}
+a{color:inherit}
+.w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.w3-button{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+/* .w3-dropdown-hover:hover > .w3-button:first-child,.w3-dropdown-click:hover > .w3-button:first-child{background-color:#ccc;color:#000}
+.w3-bar-block .w3-dropdown-hover,.w3-bar-block .w3-dropdown-click{width:100%}
+.w3-bar-block .w3-dropdown-hover .w3-dropdown-content,.w3-bar-block .w3-dropdown-click .w3-dropdown-content{min-width:100%}
+.w3-bar-block .w3-dropdown-hover .w3-button,.w3-bar-block .w3-dropdown-click .w3-button{width:100%;text-align:center;padding:8px 16px}
+.w3-bar .w3-dropdown-hover,.w3-bar .w3-dropdown-click{position:static;float:left} */
+.w3-bar{width:100%;overflow:hidden}
+.w3-bar .w3-bar-item{padding:8px 16px;float:left;width:auto;border:none;display:block;outline:0}
+.w3-bar .w3-button{white-space:normal}
+.w3-bar-block .w3-bar-item{width:100%;display:block;padding:8px 16px;text-align:left;border:none;white-space:normal;float:none;outline:0}
+.w3-bar-block.w3-center .w3-bar-item{text-align:center}
+.w3-container:after,.w3-container:before,.w3-clear:after,.w3-clear:before,.w3-bar:before,.w3-bar:after{content:"";display:table;clear:both}
+.w3-hide{display:none!important}
+.w3-show-block,.w3-show{display:block!important}
+.Container-After-Header {max-width:2000px; margin-top:60px; display:block}
+
+@media (max-width:600px){
+/*  .w3-dropdown-hover.w3-mobile .w3-dropdown-content,.w3-dropdown-click.w3-mobile .w3-dropdown-content{position:relative}    
+    .w3-dropdown-hover.w3-mobile,.w3-dropdown-click.w3-mobile{text-align:center}
+    .w3-dropdown-hover.w3-mobile,.w3-dropdown-hover.w3-mobile .w3-btn,.w3-dropdown-hover.w3-mobile .w3-button,.w3-dropdown-click.w3-mobile,.w3-dropdown-click.w3-mobile .w3-btn,.w3-dropdown-click.w3-mobile .w3-button{width:100%} */
+    .w3-hide-small{display:none!important}
+    .w3-hover-red{display:none!important}
+    .Logo-Image{left:10px; right:auto}}
+@media (min-width:993px){
+    .w3-hide-large{display:none!important}
+    .Container-After-Header{margin-left:auto; margin-right:auto}}
+@media (max-width:992px) and (min-width:601px){
+    .w3-hide-medium{display:none!important}
+    .w3-hover-red{display:none!important}
+    .Logo-Image{left:10px; right:auto}}
+
+.w3-top{position:fixed;width:100%;z-index:100;top:0}
+.w3-card{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
+.w3-card-4{box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)}
+.w3-padding-medium{padding:12px 12px!important}
+.w3-padding-large{padding:12px 20px!important}
+.w3-padding-xlarge{padding:20px!important}
+.w3-padding-10{padding-top:10px!important;padding-bottom:10px!important}
+.w3-left{float:left!important}
+.w3-right{float:right!important}
+.w3-button:hover{color:#fff!important;background-color:#F70D1A!important}
+
+#navDemo {margin-top:55px}
+
+/* NEW CSS STYLES - NEW CSS STYLES - NEW CSS STYLES */
+.Logo-Image-Link{text-decoration:none; background-color: #000}
+.Logo-Image{height:35px !important; position:absolute; right:47%; top:15px}
+.Cart-Icon-Image {height: 25px; width:auto}
+.Account-Icon-Image {height: 25px; width:auto}
+
+/* Colors */
+.w3-red,.w3-hover-red:hover{color:#fff!important;background-color:#F70D1A!important}
+.w3-black,.w3-hover-black:hover{color:#fff!important;background-color:#000!important}
+.w3-light-grey,.w3-button-2{color:#000!important;background-color:#CCC!important;text-decoration:none; border-bottom:1px solid #000 !important;}
