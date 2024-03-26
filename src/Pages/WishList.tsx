@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import ProductCard from "../components/ProductCard";
 import { useEffect, useState } from "react";
-import { getProduct } from "../api/productsApi";
-import { ProductType } from "../types/product";
-import './Home.css';
+import { getProduct } from "../api/productApi";
+import { ProductType } from "../types/productType";
+import "./Home.css";
 
 const HomePageHeader = styled.h1`
   .Title-No {
@@ -77,31 +77,51 @@ const WishList = () => {
       });
   }, []);
   return (
-    <div className="w3-content" style={{maxWidth:"2000px", marginTop:"60px", display:"block"}}>
+    <div
+      className="w3-content"
+      style={{ maxWidth: "2000px", marginTop: "60px", display: "block" }}
+    >
       <div className="Top-Banner-Container-Desktop">
-        <img src="../assets/Top-Banner-Desktop.jpg" alt="" className="Top-Banner-Image" />
+        <img
+          src="../assets/Top-Banner-Desktop.jpg"
+          alt=""
+          className="Top-Banner-Image"
+        />
       </div>
       <div className="Top-Banner-Container-Mobile">
-        <img src="../assets/Top-Banner-Mobile.jpg" alt="" className="Top-Banner-Image" />
+        <img
+          src="../assets/Top-Banner-Mobile.jpg"
+          alt=""
+          className="Top-Banner-Image"
+        />
       </div>
       <div className="About-Us-Container">
         <div className="About-Us-Info">
           <div>
             <HomePageHeader>
-              {WishListProducts.length != 0
-                ? <div className="Title-Yes">This is all your products in your Wish List:</div>
-                : <div className="Title-No">You don't have any Wish List products yet,<br />please add a product from our store...</div> }
+              {WishListProducts.length != 0 ? (
+                <div className="Title-Yes">
+                  This is all your products in your Wish List:
+                </div>
+              ) : (
+                <div className="Title-No">
+                  You don't have any Wish List products yet,
+                  <br />
+                  please add a product from our store...
+                </div>
+              )}
             </HomePageHeader>
             <ProductSection>
               {WishListProducts.map((productItem) => (
                 <ProductCard
-                  key={productItem.id}
-                  id={productItem.id}
+                  key={productItem._id}
+                  _id={productItem._id}
                   image={productItem.image}
-                  title={productItem.title}
+                  name={productItem.name}
                   description={productItem.description}
                   price={productItem.price}
                   category={productItem.category}
+                  userID=""
                 />
               ))}
             </ProductSection>
