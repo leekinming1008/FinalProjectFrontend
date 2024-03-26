@@ -5,7 +5,7 @@ const commentUrl = import.meta.env.VITE_BASE_URL + "/api/comment";
 const userID = "abcdefg";
 
 // GET all the comment by user
-const getCommentforUser = () => axios.get(`${commentUrl}/${userID}`);
+export const getCommentforUser = () => axios.get(`${commentUrl}/${userID}`);
 
 // POST create the comment 
-const createComment = (newComment: CommentType) => axios.post(`${commentUrl}`, newComment);
+export const createComment = (newComment: CommentType) => axios.post(`${commentUrl}`, newComment);
