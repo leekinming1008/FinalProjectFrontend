@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { getAllProducts } from "../api/productsApi";
+import { getAllProducts } from "../api/productApi";
 import ProductCard from "../components/ProductCard";
-import { ProductType } from "../types/product";
+import { ProductType } from "../types/productType";
 import styled from "styled-components";
 import "../components/Navbar.css";
 import "./Home.css";
@@ -22,7 +22,7 @@ const Home = () => {
     const fetchProducts = async () => {
       try {
         const response = await getAllProducts();
-        setProducts(response.data);
+        setProducts(response.data.data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -63,7 +63,7 @@ const Home = () => {
           <div className="Main-Content">
             <div className="Mobile-Nav-Container">
               <div className="dropdown-Mobile" style={{float:"left"}}>
-                <button onClick="myFunction1()" className="dropbtn1">Categories<i className="fa fa-caret-down" style={{fontSize:"24px", paddingTop:"1px", paddingLeft:"30px"}}></i></button>
+                <button onClick={()=>{}} className="dropbtn1">Categories<i className="fa fa-caret-down" style={{fontSize:"24px", paddingTop:"1px", paddingLeft:"30px"}}></i></button>
                 <div id="myDropdown1" className="dropdown-content1" style={{left:0}}>
                   <a href="#">Clothes</a>
                   <a href="#">Home Decor</a>
@@ -72,7 +72,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="filter-Mobile" style={{float:"right"}}>
-                <button onclick="myFunction2()" className="dropbtn2"><img src="../assets/Filter-Icon.png" alt="" style={{height:"20px", float:"left", paddingTop:"1px", paddingRight:"7px"}} />Filter</button>
+                <button onClick={()=>{}} className="dropbtn2"><img src="../assets/Filter-Icon.png" alt="" style={{height:"20px", float:"left", paddingTop:"1px", paddingRight:"7px"}} />Filter</button>
                 <div id="myDropdown2" className="dropdown-content2" style={{right:0}}>
                   <a href="#">By Price</a>
                   <a href="#">By Newest</a>
@@ -82,10 +82,10 @@ const Home = () => {
             <ProductSection>
               {products.map((product) => (
                 <ProductCard
-                  key={product.id}
-                  id={product.id}
+                  key={product._id}
+                  id={product._id}
                   image={product.image}
-                  title={product.title}
+                  title={product.name}
                   description={product.description}
                   price={product.price}
                   category={product.category}

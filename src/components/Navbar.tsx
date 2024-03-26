@@ -2,21 +2,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import myFunction from "./Navbar";
 
-/* 
 
-*****************************************************************************************************************
-The website layout is not working because it needs the JavaScript function below to be call so that the CSS can work
-Please help me fix this!
-*****************************************************************************************************************
-
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-} */
 
 const ResponsiveAppBar = () => {
   return (

@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 import ProductCard from "../components/ProductCard";
 import { useEffect, useState } from "react";
-import { getProduct } from "../api/productsApi";
-import { ProductType } from "../types/product";
+import { getProduct } from "../api/productApi";
+import { ProductType } from "../types/productType";
 import './Home.css';
 
 const HomePageHeader = styled.h1`
@@ -95,10 +95,10 @@ const WishList = () => {
             <ProductSection>
               {WishListProducts.map((productItem) => (
                 <ProductCard
-                  key={productItem.id}
-                  id={productItem.id}
+                  key={productItem._id}
+                  id={productItem._id}
                   image={productItem.image}
-                  title={productItem.title}
+                  title={productItem.name}
                   description={productItem.description}
                   price={productItem.price}
                   category={productItem.category}
