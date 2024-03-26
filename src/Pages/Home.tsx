@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { getAllProducts } from "../api/productsApi";
+import { getAllProducts } from "../api/productApi";
 import ProductCard from "../components/ProductCard";
-import { ProductType } from "../types/product";
+import { ProductType } from "../types/productType";
 import styled from "styled-components";
 import "../components/Navbar.css";
 import "./Home.css";
@@ -22,7 +22,7 @@ const Home = () => {
     const fetchProducts = async () => {
       try {
         const response = await getAllProducts();
-        setProducts(response.data);
+        setProducts(response.data.data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -33,64 +33,108 @@ const Home = () => {
 
   return (
     <>
-      <div className="w3-content" style={{maxWidth:"2000px", marginTop:"60px", display:"block"}}>
+      <div
+        className="w3-content"
+        style={{ maxWidth: "2000px", marginTop: "60px", display: "block" }}
+      >
         <div className="Top-Banner-Container-Desktop">
-          <img src="../assets/Top-Banner-Desktop.jpg" alt="" className="Top-Banner-Image" />
+          <img
+            src="../assets/Top-Banner-Desktop.jpg"
+            alt=""
+            className="Top-Banner-Image"
+          />
         </div>
         <div className="Top-Banner-Container-Mobile">
-          <img src="../assets/Top-Banner-Mobile.jpg" alt="" className="Top-Banner-Image" />
+          <img
+            src="../assets/Top-Banner-Mobile.jpg"
+            alt=""
+            className="Top-Banner-Image"
+          />
         </div>
         <div className="Content-Container">
           <div className="sidebar">
-              <button className="dropdown-Categories">Categories
-                <i className="fa fa-caret-down"></i>
-              </button>
-              <div className="dropdown-container">
-                <a href="#">Clothes</a>
-                <a href="#">Home Decor</a>
-                <a href="#">Toys & Games</a>
-                <a href="#">Phones & Gadgets</a>
-              </div>
-              <a href="#FilterByPrice">Filter by Price</a>
-              <a href="#FilterByNewest">Filter by Newest</a>
-              
+            <button className="dropdown-Categories">
+              Categories
+              <i className="fa fa-caret-down"></i>
+            </button>
+            <div className="dropdown-container">
+              <a href="#">Clothes</a>
+              <a href="#">Home Decor</a>
+              <a href="#">Toys & Games</a>
+              <a href="#">Phones & Gadgets</a>
+            </div>
+            <a href="#FilterByPrice">Filter by Price</a>
+            <a href="#FilterByNewest">Filter by Newest</a>
+
             <div className="Ads-Container">
               <div className="Ad-Box">AD 1</div>
               <div className="Ad-Box">AD 2</div>
               <div className="Ad-Box">AD 3</div>
-            </div> 
+            </div>
           </div>
           <div className="Main-Content">
             <div className="Mobile-Nav-Container">
-              <div className="dropdown-Mobile" style={{float:"left"}}>
-                <button onClick="myFunction1()" className="dropbtn1">Categories<i className="fa fa-caret-down" style={{fontSize:"24px", paddingTop:"1px", paddingLeft:"30px"}}></i></button>
-                <div id="myDropdown1" className="dropdown-content1" style={{left:0}}>
+              <div className="dropdown-Mobile" style={{ float: "left" }}>
+                <button onClick={() => {}} className="dropbtn1">
+                  Categories
+                  <i
+                    className="fa fa-caret-down"
+                    style={{
+                      fontSize: "24px",
+                      paddingTop: "1px",
+                      paddingLeft: "30px",
+                    }}
+                  ></i>
+                </button>
+                <div
+                  id="myDropdown1"
+                  className="dropdown-content1"
+                  style={{ left: 0 }}
+                >
                   <a href="#">Clothes</a>
                   <a href="#">Home Decor</a>
                   <a href="#">Toys & Games</a>
                   <a href="#">Phones & Gadgets</a>
                 </div>
               </div>
-              <div className="filter-Mobile" style={{float:"right"}}>
-                <button onclick="myFunction2()" className="dropbtn2"><img src="../assets/Filter-Icon.png" alt="" style={{height:"20px", float:"left", paddingTop:"1px", paddingRight:"7px"}} />Filter</button>
-                <div id="myDropdown2" className="dropdown-content2" style={{right:0}}>
+              <div className="filter-Mobile" style={{ float: "right" }}>
+                <button onClick={() => {}} className="dropbtn2">
+                  <img
+                    src="../assets/Filter-Icon.png"
+                    alt=""
+                    style={{
+                      height: "20px",
+                      float: "left",
+                      paddingTop: "1px",
+                      paddingRight: "7px",
+                    }}
+                  />
+                  Filter
+                </button>
+                <div
+                  id="myDropdown2"
+                  className="dropdown-content2"
+                  style={{ right: 0 }}
+                >
                   <a href="#">By Price</a>
                   <a href="#">By Newest</a>
                 </div>
               </div>
-            </div>            
+            </div>
             <ProductSection>
-              {products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  image={product.image}
-                  title={product.title}
-                  description={product.description}
-                  price={product.price}
-                  category={product.category}
-                />
-              ))}  
+              {products &&
+                products.map((product) => (
+                  <ProductCard
+                    key={product._id}
+                    _id={product._id}
+                    image={product.image}
+                    name={product.name}
+                    description={product.description}
+                    price={product.price}
+                    category={product.category}
+                    userID=""
+                  />
+                ))}
             </ProductSection>
           </div>
         </div>
