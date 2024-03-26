@@ -2,7 +2,6 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-
 // Pages
 import Home from "./Pages/Home";
 import AboutUs from "./Pages/AboutUs";
@@ -13,7 +12,6 @@ import LoginPage from "./Pages/LoginPage";
 import ProductDetail from "./Pages/ProductDetails";
 import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
-
 
 const browserRouter = createBrowserRouter([
   {
@@ -62,7 +60,7 @@ const browserRouter = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+  <>
     <RouterProvider router={browserRouter} />
-  </StrictMode>
+  </>
 );

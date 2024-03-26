@@ -31,20 +31,20 @@ const Wrapper = styled.div`
 
 const handleAddRemoveFavourite = (event: React.MouseEvent) => {
   const id = event.currentTarget.getAttribute("id");
-  const favouriteList = localStorage.getItem("favourite");
+  const favouriteList = localStorage.getItem("WishList");
   const favouriteListJSON: string[] = favouriteList
     ? JSON.parse(favouriteList)
     : null;
   if (id && !favouriteListJSON) {
-    localStorage.setItem("favourite", JSON.stringify([id]));
+    localStorage.setItem("WishList", JSON.stringify([id]));
   } else if (id && favouriteListJSON) {
     if (favouriteListJSON.includes(id)) {
       favouriteListJSON.splice(favouriteListJSON.indexOf(id), 1);
-      localStorage.setItem("favourite", JSON.stringify(favouriteListJSON));
+      localStorage.setItem("WishList", JSON.stringify(favouriteListJSON));
       event.currentTarget.textContent = "Add to WishList";
     } else {
       favouriteListJSON.push(id);
-      localStorage.setItem("favourite", JSON.stringify(favouriteListJSON));
+      localStorage.setItem("WishList", JSON.stringify(favouriteListJSON));
       event.currentTarget.textContent = "Remove from WishList";
     }
   }
@@ -142,7 +142,7 @@ const ProductCard = ({
         <Wrapper>
           <Button
             className="Button-Styling-2"
-            id={_id.toString()}
+            id={_id}
             onClick={handleAddRemoveFavourite}
             sx={{
               fontFamily: "Open Sans",
@@ -157,8 +157,8 @@ const ProductCard = ({
               border: "2px solid red",
             }}
           >
-            {localStorage.getItem("favourite") &&
-            JSON.stringify(localStorage.getItem("favourite")).includes(
+            {localStorage.getItem("WishList") &&
+            JSON.stringify(localStorage.getItem("WishList")).includes(
               _id.toString()
             ) ? (
               <p
