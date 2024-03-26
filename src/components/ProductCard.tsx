@@ -133,7 +133,7 @@ const ProductCard = ({
             padding: "0% 25%",
           }}
         >
-          {category}
+          {category.name}
         </Typography>
       </CardContent>
       <CardActions
