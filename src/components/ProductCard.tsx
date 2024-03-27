@@ -61,6 +61,7 @@ const ProductCard = ({
   description,
   image,
   category,
+  userID,
 }: ProductType) => {
   return (
     <Card
@@ -137,6 +138,21 @@ const ProductCard = ({
           }}
         >
           {category.name}
+        </Typography>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            fontFamily: "Open Sans",
+            fontSize: "20px",
+            lineHeight: "22px",
+            fontWeight: "600",
+            width: "100%",
+            textAlign: "center",
+            padding: "0% 25%",
+          }}
+        >
+          <Link to={`/UserPage/${userID._id}`}>Owner: {userID.name}</Link>
         </Typography>
       </CardContent>
       <CardActions

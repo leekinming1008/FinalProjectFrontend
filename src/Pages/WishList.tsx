@@ -121,7 +121,7 @@ const WishList = () => {
                   description={productItem.description}
                   price={productItem.price}
                   category={productItem.category}
-                  userID=""
+                  userID={productItem.userID}
                 />
               ))}
             </ProductSection>

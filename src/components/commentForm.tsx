@@ -5,16 +5,19 @@ import "./form.css";
 import ErrorMessageContainer from "./ErrorMessageContainer";
 import { createComment } from "../api/commentApi";
 import { userStore } from "../store/userStore";
-
-const { userID } = userStore();
+import { useNavigate } from "react-router-dom";
 
 const validation = Yup.object().shape({
   comment: Yup.string().required("Please enter message"),
 });
 
-const CommentForm = ({ targetUserID }: any) => {
-  // const nav = useNavigate();
+interface CommentFormProps {
+  targetUserID: string;
+}
 
+const CommentForm = ({ targetUserID }: CommentFormProps) => {
+  const { userID } = userStore();
+  const nav = useNavigate();
   return (
     <Formik
       initialValues={{
@@ -28,7 +31,7 @@ const CommentForm = ({ targetUserID }: any) => {
         try {
           const response = await createComment(values);
           if (response?.status == 201) {
-            alert("You have successfully add the product!! :)");
+            alert("You have successfully create the comment!! :)");
           }
         } catch (error) {
           console.error(
@@ -37,7 +40,7 @@ const CommentForm = ({ targetUserID }: any) => {
           );
         } finally {
           resetForm();
-          // nav("/");
+          nav("/");
         }
       }}
     >

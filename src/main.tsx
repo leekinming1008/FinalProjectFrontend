@@ -14,6 +14,8 @@ import NotFound from "./components/NotFound";
 
 import SignUp from "./Pages/SingUp";
 import EditPage from "./Pages/EditPage";
+import CreateProductPage from "./Pages/CreateProductPage";
+import CreateCommentPage from "./Pages/CreateCommitPage";
 
 const browserRouter = createBrowserRouter([
   {
@@ -38,12 +40,20 @@ const browserRouter = createBrowserRouter([
         element: <WishList />,
       },
       {
-        path: "/UserPage",
+        path: "/UserPage/:selecteduserID",
         element: <UserPage />,
       },
       {
         path: "/editProduct/:id",
         element: <EditPage />,
+      },
+      {
+        path: "/createProduct",
+        element: <CreateProductPage />,
+      },
+      {
+        path: "/createComment/:selecteduserID",
+        element: <CreateCommentPage />,
       },
       // {
       //   path: "/LoginPage",
