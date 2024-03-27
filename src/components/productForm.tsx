@@ -127,75 +127,58 @@ const ProductForm = () => {
             <div className="image-display form-row">
               <PreviewImageSection src={values.image} alt="invalid image url" />
             </div>
-            <div className="form-row">
-              <div className="input-data">
-                <Field name="image" type="url" />
-                {errors.image && touched.image ? (
-                  <ErrorMessageContainer name="image" />
-                ) : null}
-                <div className="underline"></div>
-                <label>Image URL</label>
-              </div>
+            <div className="input-field">
+              <Field name="image" type="url" id="image" />
+              {errors.image && touched.image ? (
+                <ErrorMessageContainer name="image" />
+              ) : null}
+              <label>Image URL</label>
             </div>
-            <div className="form-row">
-              <div className="input-data">
-                <Field name="name" type="text" />
-                {errors.name && touched.name ? (
-                  <ErrorMessageContainer name="name" />
-                ) : null}
-                <div className="underline"></div>
-                <label>Product Name</label>
-              </div>
+            <div className="input-field">
+              <Field name="name" type="text" />
+              {errors.name && touched.name ? (
+                <ErrorMessageContainer name="name" />
+              ) : null}
+              <label>Product Name</label>
             </div>
-            <div className="form-row">
-              <div className="input-data">
-                <select
-                  name="category"
-                  value={values.category}
-                  onChange={handleChange}
-                >
-                  <option value="" label="Select a category">
-                    Select a category{" "}
+            <div className="input-field">
+              <select
+                name="category"
+                value={values.category}
+                onChange={handleChange}
+              >
+                <option value="" label="Select a category">
+                  Select a category{" "}
+                </option>
+                {allCategory.map((category) => (
+                  <option key={category._id} value={category._id}>
+                    {category.name}
                   </option>
-                  {allCategory.map((category) => (
-                    <option key={category._id} value={category._id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-                {errors.category && touched.category ? (
-                  <ErrorMessageContainer name="category" />
-                ) : null}
-                <div className="underline"></div>
-                <label>category</label>
-              </div>
-              <div className="input-data">
-                <Field name="price" type="number" />
-                {errors.price && touched.price ? (
-                  <ErrorMessageContainer name="price" />
-                ) : null}
-                <div className="underline"></div>
-                <label>Price</label>
-              </div>
+                ))}
+              </select>
+              {errors.category && touched.category ? (
+                <ErrorMessageContainer name="category" />
+              ) : null}
+              <label>Category</label>
             </div>
-            <div className="form-row">
-              <div className="input-data">
-                <Field name="description" type="text" />
-                {errors.description && touched.description ? (
-                  <ErrorMessageContainer name="description" />
-                ) : null}
-                <div className="underline"></div>
-                <label>Description</label>
-              </div>
+            <div className="input-field">
+              <Field name="price" type="number" />
+              {errors.price && touched.price ? (
+                <ErrorMessageContainer name="price" />
+              ) : null}
+              <label>Price</label>
+            </div>
+
+            <div className="input-field">
+              <Field name="description" type="text" />
+              {errors.description && touched.description ? (
+                <ErrorMessageContainer name="description" />
+              ) : null}
+              <label>Description</label>
             </div>
             <SetupDefaultValue />
-            <div className="form-row">
-              <div className="form-row submit-btn">
-                <div className="input-data">
-                  <div className="inner"></div>
-                  <input type="submit" value="submit" />
-                </div>
-              </div>
+            <div className="button_container">
+              <input type="submit" value="submit" />
             </div>
           </Form>
         </div>
