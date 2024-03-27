@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
 
-import "../css/form.css";
+import "./form.css";
 import ErrorMessageContainer from "./ErrorMessageContainer";
 import { ProductType } from "../types/productType";
 import { editProduct, getProduct, addProduct } from "../api/productApi";
@@ -110,10 +110,11 @@ const ProductForm = () => {
       }}
     >
       {({ errors, touched, values, handleChange }) => (
-        <div className="container">
-          <div className="text">
-            {id ? "Edit Product Form" : "Add New Product Form"}
+        <div className="card">
+          <div className="header">
+            <h1>{id ? "Edit Product Form" : "Add New Product Form"}</h1>
           </div>
+
           <Form>
             <div className="image-display form-row">
               <PreviewImageSection src={values.image} alt="invalid image url" />

@@ -13,6 +13,8 @@ import ProductDetail from "./Pages/ProductDetails";
 import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
 
+import SignUp from "./Pages/SingUp";
+
 const browserRouter = createBrowserRouter([
   {
     path: "/",
@@ -39,10 +41,10 @@ const browserRouter = createBrowserRouter([
         path: "/UserPage",
         element: <UserPage />,
       },
-      {
-        path: "/LoginPage",
-        element: <LoginPage />,
-      },
+      // {
+      //   path: "/LoginPage",
+      //   element: <LoginPage />,
+      // },
       {
         path: "/ProductDetail/:id",
         element: <ProductDetail />,
@@ -51,11 +53,11 @@ const browserRouter = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <div>Login</div>,
+    element: <LoginPage />,
   },
   {
     path: "/signup",
-    element: <div>Sign Up</div>,
+    element: <SignUp />,
   },
 ]);
 
