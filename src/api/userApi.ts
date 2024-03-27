@@ -1,4 +1,5 @@
 import axios from "axios";
+import { userType } from "../types/userType";
 
 const USER_ENDPOINT =import.meta.env.VITE_BASE_URL + "/api/user";
 const LOGIN_ENDPOINT =import.meta.env.VITE_BASE_URL + "/api/user/login";
@@ -8,14 +9,7 @@ const WISHLIST_ENDPOINT =import.meta.env.VITE_BASE_URL + "/api/user/wishlist";
 export const getUserByID = (id: string) => axios.get(`${USER_ENDPOINT}/${id}`);
 
 //Create new user
-interface userType {
-    name: string;
-    emailAddress: string;
-    phone: string;
-    address: string;
-    password:string;
-    wishList: string[];
-}
+
 export const createUser = (userData: userType) => axios.post(USER_ENDPOINT, userData);
 
 // Delete a user
@@ -43,4 +37,4 @@ export const getWishlist = (wishlistData: wishListType) => axios.get(WISHLIST_EN
 export const addToWhishlist = (whishlistData: wishListType) => axios.post(WISHLIST_ENDPOINT, whishlistData);
 
 //delete from whishlist
-export const deleteFromWhishlist = (whishlistData: wishListType) => axios.delete(WISHLIST_ENDPOINT, whishlistData);
+// export const deleteFromWhishlist = (whishlistData: wishListType) => axios.delete(WISHLIST_ENDPOINT, whishlistData);

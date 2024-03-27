@@ -1,9 +1,12 @@
+import { CategoryType } from "./categoryType";
+import { userType } from "./userType";
+
 export interface ProductType {
     _id?: string,
     image: string,
     name: string,
     description: string,
-    category: string,
+    category: CategoryType,
     price: number,
-    userID: string
+    userID: userType
 }
