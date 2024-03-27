@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
-import "../css/form.css";
+import "./form.css";
 import ErrorMessageContainer from "./ErrorMessageContainer";
 import { createComment } from "../api/commentApi";
 
@@ -41,26 +41,21 @@ const CommentForm = ({ targetUserID }: any) => {
       }}
     >
       {({ errors, touched }) => (
-        <div className="container">
-          <div className="text">Add New Comment</div>
+        <div className="card">
+          <div className="header">
+            <h1>Add New Comment</h1>
+          </div>
+
           <Form>
-            <div className="form-row">
-              <div className="input-data">
-                <Field as="textarea" name="comment" type="text" />
-                {errors.comment && touched.comment ? (
-                  <ErrorMessageContainer name="comment" />
-                ) : null}
-                <div className="underline"></div>
-                <label>Comment</label>
-              </div>
+            <div className="input-field" id="full_width">
+              <Field as="textarea" name="comment" type="text" id="area" />
+              {errors.comment && touched.comment ? (
+                <ErrorMessageContainer name="comment" />
+              ) : null}
+              <label>Comment</label>
             </div>
-            <div className="form-row">
-              <div className="form-row submit-btn">
-                <div className="input-data">
-                  <div className="inner"></div>
-                  <input type="submit" value="submit" />
-                </div>
-              </div>
+            <div className="button_container">
+              <input type="submit" value="submit" />
             </div>
           </Form>
         </div>
