@@ -188,7 +188,7 @@ const Home = () => {
                     description={product.description}
                     price={product.price}
                     category={product.category}
-                    userID=""
+                    userID={product.userID}
                   />
                 ))}
             </ProductSection>

@@ -93,7 +93,7 @@ function ResponsiveAppBar() {
               <NavButtonSmaller link="/AboutUs" name="About Us" />
               <NavButtonSmaller link="/WishList" name="Wish List" />
               {userID ? (
-                <NavButtonSmaller link="/UserPage" name="Account" />
+                <NavButtonSmaller link={`/UserPage/${userID}`} name="Account" />
               ) : (
                 <NavButtonSmaller link="/login" name="Login" />
               )}
@@ -136,7 +136,7 @@ function ResponsiveAppBar() {
               className="Account-Icon-Image"
             />
             {userID ? (
-              <NavButton link="/UserPage" name="Account" />
+              <NavButton link={`/UserPage/${userID}`} name="Account" />
             ) : (
               <NavButton link="/login" name="Login" />
             )}
