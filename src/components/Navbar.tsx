@@ -7,21 +7,18 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-//import Avatar from "@mui/material/Avatar";
-// import Button from "@mui/material/Button";
-//import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-//import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import NavButton from "./NavButton";
 import NavButtonSmaller from "./NavButtonSmaller";
-
+import { userStore } from "../store/userStore";
 
 // const pages = ["Home", "Add Product", "Favourites", "Product Details"];
 const settings = ["Login", "Sign Up"];
 
 function ResponsiveAppBar() {
+  const { userID, setUserID } = userStore();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -32,7 +29,7 @@ function ResponsiveAppBar() {
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-/*   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  /*   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   }; */
 
@@ -62,8 +59,7 @@ function ResponsiveAppBar() {
               color: "inherit",
               textDecoration: "none",
             }}
-          >
-          </Typography>
+          ></Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -96,14 +92,19 @@ function ResponsiveAppBar() {
             >
               <NavButtonSmaller link="/AboutUs" name="About Us" />
               <NavButtonSmaller link="/WishList" name="Wish List" />
-              <NavButtonSmaller link="/LoginPage" name="Account" />
+              {userID ? (
+                <NavButtonSmaller link="/UserPage" name="Account" />
+              ) : (
+                <NavButtonSmaller link="/login" name="Login" />
+              )}
               <NavButtonSmaller link="/CartPage" name="Cart" />
+              {userID && <NavButtonSmaller link="/" name="LogOut" />}
             </Menu>
           </Box>
-          
+
           <Link className="Logo-Image-Link" to="/">
-              <img src="../assets/CantekShop-Logo.png" className="Logo-Image" />
-            </Link>
+            <img src="../assets/CantekShop-Logo.png" className="Logo-Image" />
+          </Link>
           <Typography
             variant="h5"
             noWrap
@@ -119,15 +120,37 @@ function ResponsiveAppBar() {
               color: "inherit",
               textDecoration: "none",
             }}
+          ></Typography>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              padding: "0px",
+              margin: "0px",
+            }}
           >
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, padding:"0px", margin:"0px" }}>
             <NavButton link="/AboutUs" name="About Us" />
             <NavButton link="/WishList" name="Wish List" />
-            <img src="../assets/Account-Icon.png" className="Account-Icon-Image" />
-            <NavButton link="/LoginPage" name="Account" />
+            <img
+              src="../assets/Account-Icon.png"
+              className="Account-Icon-Image"
+            />
+            {userID ? (
+              <NavButton link="/UserPage" name="Account" />
+            ) : (
+              <NavButton link="/login" name="Login" />
+            )}
             <img src="../assets/Cart-Icon.png" className="Cart-Icon-Image" />
             <NavButton link="/CartPage" name="Cart" />
+            {userID && (
+              <NavButton
+                link="/"
+                name="LogOut"
+                onclick={() => {
+                  setUserID("");
+                }}
+              />
+            )}
 
             {/* <NavButton link="/productDetail/:id" name="Product Details" /> */}
           </Box>

@@ -1,7 +1,7 @@
 import SignUpForm from "../components/SignUpForm";
 import "./LoginPage.css";
 
-const LoginPage = () => {
+const SignupPage = () => {
   return (
     <>
       <div className="page_container">
@@ -18,4 +18,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;

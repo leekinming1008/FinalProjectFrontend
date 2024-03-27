@@ -2,7 +2,6 @@ import axios from "axios";
 import { ProductType } from "../types/productType";
 
 const productApi = import.meta.env.VITE_BASE_URL + "/api/product";
-const userID = "abcdefg";
 
 // GET all the product
 export const getAllProducts = () => axios.get(`${productApi}`);
@@ -11,7 +10,7 @@ export const getAllProducts = () => axios.get(`${productApi}`);
 export const getProduct = (productID: string) => axios.get(`${productApi}/${productID}`);
 
 // GET get all the product by user
-export const getUserProducts = () => axios.get(`${productApi}/fromUser/${userID}`);
+export const getUserProducts = (userID: string) => axios.get(`${productApi}/fromUser/${userID}`);
 
 // POST create the product
 export const addProduct = (newProduct: ProductType) => axios.post(`${productApi}`, newProduct);

@@ -38,7 +38,6 @@ const Home = () => {
   }, []);
 
   const handleOnclick = async (categoryID?: string) => {
-    console.log(categoryID);
     const fatchProduct = async () => {
       try {
         const getProducts = await getAllProducts();
@@ -50,7 +49,6 @@ const Home = () => {
     const fatchProductByCate = async (categoryID: string) => {
       try {
         const getProducts = await getProductByCategory(categoryID);
-        console.log(getProducts.data.data);
         setProducts(getProducts.data.data);
       } catch (error) {
         console.error("Error fetching products:", error);

@@ -4,8 +4,9 @@ import * as Yup from "yup";
 import "./form.css";
 import ErrorMessageContainer from "./ErrorMessageContainer";
 import { createComment } from "../api/commentApi";
+import { userStore } from "../store/userStore";
 
-const userID = "testing user id";
+const { userID } = userStore();
 
 const validation = Yup.object().shape({
   comment: Yup.string().required("Please enter message"),

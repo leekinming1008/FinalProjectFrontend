@@ -10,8 +10,7 @@ import { ProductType } from "../types/productType";
 import { editProduct, getProduct, addProduct } from "../api/productApi";
 import { getAllCategory } from "../api/categoryApi";
 import { CategoryType } from "../types/categoryType";
-
-const userID = "testing user id";
+import { userStore } from "../store/userStore";
 
 const validation = Yup.object().shape({
   image: Yup.string()
@@ -33,13 +32,22 @@ const PreviewImageSection = styled.img`
 `;
 
 const ProductForm = () => {
+  const { userID } = userStore();
   const { id } = useParams();
   const [currentProduct, setCurrentProduct] = useState<ProductType>();
   const [allCategory, setAllCategory] = useState<CategoryType[]>([]);
   const SetupDefaultValue = () => {
     const { values, resetForm } = useFormikContext<ProductType>();
     useEffect(() => {
+      if (
+        currentProduct &&
+        typeof currentProduct.category === "object" &&
+        currentProduct.category._id
+      ) {
+        currentProduct.category = currentProduct.category._id;
+      }
       Object.assign(values, currentProduct);
+      console.log(currentProduct);
       resetForm();
     }, []);
     return null;
@@ -70,7 +78,7 @@ const ProductForm = () => {
     id && fatchProduct(id);
     location.reload;
   }, []);
-  // const nav = useNavigate();
+  const nav = useNavigate();
 
   return (
     <Formik
@@ -105,7 +113,7 @@ const ProductForm = () => {
           );
         } finally {
           resetForm();
-          // nav("/");
+          nav("/");
         }
       }}
     >
