@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
-import { getAllProducts } from "../api/productApi";
+import { getAllProducts, getProductByCategory } from "../api/productApi";
 import ProductCard from "../components/ProductCard";
 import { ProductType } from "../types/productType";
 import styled from "styled-components";
 import "../components/Navbar.css";
 import "./Home.css";
+import { List, ListItem } from "@mui/material";
+import { CategoryType } from "../types/categoryType";
+import { getAllCategory } from "../api/categoryApi";
 
 const ProductSection = styled.div`
   display: flex;
@@ -17,13 +20,15 @@ const ProductSection = styled.div`
 
 const Home = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const [categories, setCategories] = useState<CategoryType[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await getAllProducts();
-        console.log(response.data.data[0].category.name);
-        setProducts(response.data.data);
+        const getProducts = await getAllProducts();
+        setProducts(getProducts.data.data);
+        const getCategories = await getAllCategory();
+        setCategories(getCategories.data.category);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -31,6 +36,33 @@ const Home = () => {
 
     fetchProducts();
   }, []);
+
+  const handleOnclick = async (categoryID?: string) => {
+    console.log(categoryID);
+    const fatchProduct = async () => {
+      try {
+        const getProducts = await getAllProducts();
+        setProducts(getProducts.data.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    const fatchProductByCate = async (categoryID: string) => {
+      try {
+        const getProducts = await getProductByCategory(categoryID);
+        console.log(getProducts.data.data);
+        setProducts(getProducts.data.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    if (categoryID == "") {
+      fatchProduct();
+    } else if (categoryID) {
+      fatchProductByCate(categoryID);
+    }
+  };
 
   return (
     <>
@@ -54,19 +86,44 @@ const Home = () => {
         </div>
         <div className="Content-Container">
           <div className="sidebar">
-            <button className="dropdown-Categories">
+            <button
+              className="dropdown-Categories"
+              onClick={(event) => {
+                if (
+                  document.getElementsByClassName("dropdown-container")[0].style
+                    .display == "block"
+                ) {
+                  document.getElementsByClassName(
+                    "dropdown-container"
+                  )[0].style.display = "none";
+                } else {
+                  document.getElementsByClassName(
+                    "dropdown-container"
+                  )[0].style.display = "block";
+                }
+              }}
+            >
               Categories
               <i className="fa fa-caret-down"></i>
             </button>
-            <div className="dropdown-container">
-              <a href="#">Clothes</a>
-              <a href="#">Home Decor</a>
-              <a href="#">Toys & Games</a>
-              <a href="#">Phones & Gadgets</a>
-            </div>
-            <a href="#FilterByPrice">Filter by Price</a>
-            <a href="#FilterByNewest">Filter by Newest</a>
-
+            <List className="dropdown-container">
+              <ListItem
+                key="Select all categories"
+                value=""
+                onClick={() => handleOnclick("")}
+              >
+                Select all categories
+              </ListItem>
+              {categories.map((category) => (
+                <ListItem
+                  key={category._id}
+                  value={category._id}
+                  onClick={() => handleOnclick(category._id)}
+                >
+                  {category.name}
+                </ListItem>
+              ))}
+            </List>
             <div className="Ads-Container">
               <div className="Ad-Box">AD 1</div>
               <div className="Ad-Box">AD 2</div>

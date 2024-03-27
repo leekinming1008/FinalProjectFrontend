@@ -21,3 +21,6 @@ export const editProduct = (productID: string, product: ProductType) => axios.pu
 
 // DELETE remove the product
 export const removeProduct = (productID: string) => axios.delete(`${productApi}/${productID}`);
+
+// GET get the product by category
+export const getProductByCategory = (categoryID: string) => axios.get(`${productApi}/getProductByCate/${categoryID}`);
