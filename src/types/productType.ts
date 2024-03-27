@@ -5,7 +5,7 @@ export interface ProductType {
     image: string,
     name: string,
     description: string,
-    category: CategoryType,
+    category: string,
     price: number,
     userID: string
 }

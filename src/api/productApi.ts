@@ -1,8 +1,9 @@
 import axios from "axios";
 import { ProductType } from "../types/productType";
+import { userStore } from "../store/userStore";
 
 const productApi = import.meta.env.VITE_BASE_URL + "/api/product";
-const userID = "abcdefg";
+const {userID} = userStore();
 
 // GET all the product
 export const getAllProducts = () => axios.get(`${productApi}`);

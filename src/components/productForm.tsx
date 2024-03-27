@@ -10,8 +10,9 @@ import { ProductType } from "../types/productType";
 import { editProduct, getProduct, addProduct } from "../api/productApi";
 import { getAllCategory } from "../api/categoryApi";
 import { CategoryType } from "../types/categoryType";
+import { userStore } from "../store/userStore";
 
-const userID = "testing user id";
+const { userID } = userStore();
 
 const validation = Yup.object().shape({
   image: Yup.string()
@@ -70,7 +71,7 @@ const ProductForm = () => {
     id && fatchProduct(id);
     location.reload;
   }, []);
-  // const nav = useNavigate();
+  const nav = useNavigate();
 
   return (
     <Formik
@@ -105,7 +106,7 @@ const ProductForm = () => {
           );
         } finally {
           resetForm();
-          // nav("/");
+          nav("/");
         }
       }}
     >
