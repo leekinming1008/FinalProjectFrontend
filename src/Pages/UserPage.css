@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+.User-Page-Container {height:auto; padding-bottom:100px; background-color:#FFF; box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset}
+.User-Page-Container-Desktop {position: relative; overflow: hidden; width: 100%; height: 450px}
+.User-Page-Container-Mobile { display: none }
+.User-Page-Banner {width: 100%; height: 450px; object-fit: cover; object-position: 0% 50%; position: fixed; z-index: -1}
+.User-Page-Products {color:#000; font-size:18px; font-weight:600; font-family:"Open Sans", sans-serif; line-height:24px; padding:20px 25px;}
+.User-Page-Products h1 {font-size:28px; padding-top:45px;}
+
+
+@media (max-width:1200px){
+    .User-Page-Container-Desktop { height:420px }
+    .User-Page-Banner { height:420px }
+}
+@media (max-width:830px){ 
+    .User-Page-Container-Desktop { height:400px }
+    .User-Page-Banner { height:400px }
+}
+@media (max-width:750px){
+    .User-Page-Container-Desktop { display: none }
+    .User-Page-Container-Mobile { display: block; position:relative; height:280px; overflow:hidden; width:100% }
+    .User-Page-Banner {width: 100%; height: 280px; object-fit: cover; object-position: 0% 100%; position: fixed; z-index: -1}
+}
+@media (max-width:650px){
+    .User-Page-Container-Mobile { height:250px }
+    .User-Page-Banner { height:250px; object-position: 0% 100%; }
+}
+@media (max-width:500px){
+    .User-Page-Container-Mobile { height:200px }
+    .User-Page-Banner { height:200px; width:100%; object-position: 0% 100%; }
+}
