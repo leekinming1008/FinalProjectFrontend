@@ -33,10 +33,10 @@ export const userLogin = (userData: loginType) => axios.post(`${LOGIN_ENDPOINT}`
 
 //Post to get user's wishlist 
 interface wishListType {
-    id: string;
-    productID: string;
+    userID: string;
+    productID?: string;
 }
-export const getWhishlist = (whishlistData: wishListType) => axios.post(WISHLIST_ENDPOINT, whishlistData);
+export const getWishlist = (wishlistData: wishListType) => axios.get(WISHLIST_ENDPOINT, {params: {userID: wishlistData.userID}});
 
 
 //Add to whishlist

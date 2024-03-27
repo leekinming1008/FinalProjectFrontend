@@ -97,6 +97,16 @@ const LoginForm = () => {
           <div className="button_container">
             <input type="submit" value="Submit"></input>
           </div>
+          <div className="button_container">
+            <input
+              type="submit"
+              value="Create account"
+              onClick={() => {
+                navigate("/signup");
+                console.log("enter the create account function");
+              }}
+            ></input>
+          </div>
           {isclicked && !isLogin ? (
             <div className="wrong_login">Wrong Login Info</div>
           ) : null}

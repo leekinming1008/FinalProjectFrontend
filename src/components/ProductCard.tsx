@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 import { ProductType } from "../types/productType";
 import styled from "styled-components";
 import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
+import { userStore } from "../store/userStore";
+import { useEffect } from "react";
+import { getWishlist } from "../api/userApi";
 //import './ProductCard.css'
 
 /*

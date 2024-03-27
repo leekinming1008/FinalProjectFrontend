@@ -33,9 +33,7 @@ const SignUpForm = () => {
       phone: Yup.string()
         .matches(/^\d{10}$/, "Must not have space.")
         .required("Required"),
-      address: Yup.string()
-        .matches(/^.$/, "Must not have space.")
-        .required("Required"),
+      address: Yup.string().required("Required"),
     }),
     onSubmit: async (values, { resetForm }) => {
       console.log("Submitted values:", values);
@@ -136,7 +134,6 @@ const SignUpForm = () => {
             onBlur={formik.handleBlur}
             value={formik.values.address}
             required
-            pattern="^.$"
             placeholder=" "
           ></input>
           {formik.touched.address && formik.errors.address ? (
