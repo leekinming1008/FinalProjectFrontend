@@ -13,6 +13,7 @@ import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
 
 import SignUp from "./Pages/SingUp";
+import EditPage from "./Pages/EditPage";
 
 const browserRouter = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const browserRouter = createBrowserRouter([
       {
         path: "/UserPage",
         element: <UserPage />,
+      },
+      {
+        path: "/editProduct/:id",
+        element: <EditPage />,
       },
       // {
       //   path: "/LoginPage",

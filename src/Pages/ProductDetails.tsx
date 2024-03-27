@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getProduct } from "../api/productApi";
+import { getProduct, removeProduct } from "../api/productApi";
 import { ProductType } from "../types/productType";
 import { BeatLoader } from "react-spinners";
 import "./ProductDetails.css";
@@ -22,10 +22,18 @@ const ProductDetail = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { userID } = userStore();
 
-  const handleDeleteProduct = () => {
-    console.log("enter the delete product function");
+  const handleDeleteProduct = async () => {
+    try {
+      const response = await removeProduct(id);
+      if (response.status == 204) {
+        navigate("/");
+      }
+    } catch (err) {
+      console.error("Error when delete the product");
+    }
   };
   const handleEditProduct = () => {
+    navigate(`/editProduct/${id}`);
     console.log("enter the edit product function");
   };
 

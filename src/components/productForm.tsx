@@ -12,8 +12,6 @@ import { getAllCategory } from "../api/categoryApi";
 import { CategoryType } from "../types/categoryType";
 import { userStore } from "../store/userStore";
 
-const { userID } = userStore();
-
 const validation = Yup.object().shape({
   image: Yup.string()
     .url("Please input valid URL")
@@ -34,13 +32,22 @@ const PreviewImageSection = styled.img`
 `;
 
 const ProductForm = () => {
+  const { userID } = userStore();
   const { id } = useParams();
   const [currentProduct, setCurrentProduct] = useState<ProductType>();
   const [allCategory, setAllCategory] = useState<CategoryType[]>([]);
   const SetupDefaultValue = () => {
     const { values, resetForm } = useFormikContext<ProductType>();
     useEffect(() => {
+      if (
+        currentProduct &&
+        typeof currentProduct.category === "object" &&
+        currentProduct.category._id
+      ) {
+        currentProduct.category = currentProduct.category._id;
+      }
       Object.assign(values, currentProduct);
+      console.log(currentProduct);
       resetForm();
     }, []);
     return null;
