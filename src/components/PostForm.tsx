@@ -6,10 +6,12 @@ import { CategoryType } from "../types/categoryType";
 import { useEffect, useState } from "react";
 import { getAllCategory } from "../api/categoryApi";
 import { userStore } from "../store/userStore";
+import { useNavigate } from "react-router-dom";
 
 const PostForm = () => {
   const { userID } = userStore();
   const [allCategory, setAllCategory] = useState<CategoryType[]>([]);
+  const nav = useNavigate();
   useEffect(() => {
     const fatchCategory = async () => {
       try {
@@ -55,7 +57,8 @@ const PostForm = () => {
       } catch (err) {
         console.error("Failed to add Product", err);
       } finally {
-        // resetForm({});
+        resetForm({});
+        nav("/");
       }
     },
   });
