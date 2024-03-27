@@ -8,6 +8,8 @@ import "./Home.css";
 import { List, ListItem } from "@mui/material";
 import { CategoryType } from "../types/categoryType";
 import { getAllCategory } from "../api/categoryApi";
+import { userStore } from "../store/userStore";
+import { getWishlist } from "../api/userApi";
 
 const ProductSection = styled.div`
   display: flex;
@@ -21,6 +23,7 @@ const ProductSection = styled.div`
 const Home = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [categories, setCategories] = useState<CategoryType[]>([]);
+  const { userID } = userStore();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,7 +36,16 @@ const Home = () => {
         console.error("Error fetching products:", error);
       }
     };
-
+    const fatchUserWishlist = async () => {
+      try {
+        console.log(userID);
+        const response = await getWishlist({ userID: userID });
+        console.log(response);
+      } catch (error) {
+        console.error("Error fetching fatchUserWishlist:", error);
+      }
+    };
+    userID && fatchUserWishlist();
     fetchProducts();
   }, []);
 
