@@ -1,13 +1,16 @@
 import { create } from "zustand";
+import {persist} from "zustand/middleware"
 
-interface UserStore {
-    userID: string;
-    setUserID: (text: string) => void;
-
-}
-
-export const userStore = create<UserStore>((set) => ({
+let store = (set: any) => ({
     userID: "",
-    setUserID: (text: string) => set({ userID: text }),
-}));
+    setUserID: (text: string) => {
+        set(()=>({
+            userID: text,
+        }))
+    }
+})
+
+store = persist(store, {name: "userID"})
+
+export const userStore = create(store);
 

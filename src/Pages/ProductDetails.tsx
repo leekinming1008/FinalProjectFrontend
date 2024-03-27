@@ -62,7 +62,7 @@ const ProductDetail = () => {
             <h1 className="Product-Title">{product.name}</h1>
             <p className="Product-Description">{product.description}</p>
             <p className="Product-Price">${product.price} CAD</p>
-            {product._id == userID && (
+            {product.userID._id == userID && (
               <center>
                 {/* <button onClick={() => setModalOpen(true)}>Update Product</button> */}
                 <button

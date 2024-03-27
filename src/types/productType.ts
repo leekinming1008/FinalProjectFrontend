@@ -1,5 +1,3 @@
-import { CategoryType } from "./categoryType";
-
 export interface ProductType {
     _id?: string,
     image: string,
