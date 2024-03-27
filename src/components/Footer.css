@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-.Footer {background-color:#252b60; color:white; padding-top:50px; width:100%; text-align: center; margin:0px}
+.Footer {background-color:#191c22; color:white; width:100%; text-align: center; margin:0px; padding: 0px;}
+.Top-Footer {background-color:#252b60; padding-top:50px; width:100%; text-align: center; margin:0px}
 .Footer-Logos-Large{ display:block; width:800px; height:auto; margin:auto; padding-bottom:45px; border:none;}
 .Footer-Logos-Medium{ display:none }
 .Footer-Logos-Small{ display:none }
