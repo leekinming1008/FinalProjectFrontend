@@ -1,21 +1,15 @@
 //import React from 'react'
-import "./LoginPage.css";
-import LoginForm from "../components/LoginForm";
 import PostForm from "../components/PostForm";
+import LoginForm from "../components/loginForm";
+import ProductForm from "../components/productForm";
+import "./LoginPage.css";
 
 const LoginPage = () => {
   return (
     <>
       <div className="page_container">
-        <div className="card">
-          <div className="header">
-            <h1>Login</h1>
-          </div>
-          <div className="form_container">
-            {/* <LoginForm /> */}
-            <PostForm />
-          </div>
-        </div>
+        {/* <LoginForm /> */}
+        <ProductForm />
       </div>
     </>
   );

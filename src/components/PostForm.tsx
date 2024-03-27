@@ -40,71 +40,73 @@ const PostForm = () => {
   });
   return (
     <>
-      <div className="header-contaner">
-        <h1>Add Post</h1>
+      <div className="card">
+        <div className="header">
+          <h1>Add Post</h1>
+        </div>
+        <form action="#" method="post" onSubmit={formik.handleSubmit}>
+          <div className="input-field image-link">
+            <input
+              type="url"
+              id="image"
+              name="image"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.image}
+              required
+              placeholder=" "
+            ></input>
+            {formik.touched.image && formik.errors.image ? (
+              <div className="requirement-message">{formik.errors.image}</div>
+            ) : null}
+            <label htmlFor="image">Image Link:</label>
+          </div>
+
+          <div className="input-field">
+            <input
+              type="text"
+              id="description"
+              name="description"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.description}
+              required
+              pattern="^(?!.*\s{2,})[A-Za-z0-9() -]+$"
+              placeholder=" "
+            ></input>
+            {formik.touched.description && formik.errors.description ? (
+              <div className="requirement-message">
+                {formik.errors.description}
+              </div>
+            ) : null}
+            <label htmlFor="description">Description:</label>
+          </div>
+
+          <div className="input-field">
+            <input
+              type="text"
+              id="description"
+              name="description"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.description}
+              required
+              pattern="^(?!.*\s{2,})[A-Za-z0-9() -]+$"
+              placeholder=" "
+            ></input>
+            {formik.touched.description && formik.errors.description ? (
+              <div className="requirement-message">
+                {formik.errors.description}
+              </div>
+            ) : null}
+            <label htmlFor="description">Description:</label>
+          </div>
+
+          <div className="button_container">
+            <input type="submit" value="Submit"></input>
+          </div>
+        </form>
       </div>
-      <form action="#" method="post" onSubmit={formik.handleSubmit}>
-        <div className="input-field image-link">
-          <input
-            type="url"
-            id="image"
-            name="image"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.image}
-            required
-            placeholder=" "
-          ></input>
-          {formik.touched.image && formik.errors.image ? (
-            <div className="requirement-message">{formik.errors.image}</div>
-          ) : null}
-          <label htmlFor="image">Image Link:</label>
-        </div>
-
-        <div className="input-field">
-          <input
-            type="text"
-            id="description"
-            name="description"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.description}
-            required
-            pattern="^(?!.*\s{2,})[A-Za-z0-9() -]+$"
-            placeholder=" "
-          ></input>
-          {formik.touched.description && formik.errors.description ? (
-            <div className="requirement-message">
-              {formik.errors.description}
-            </div>
-          ) : null}
-          <label htmlFor="description">Description:</label>
-        </div>
-
-        <div className="input-field">
-          <input
-            type="text"
-            id="description"
-            name="description"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.description}
-            required
-            pattern="^(?!.*\s{2,})[A-Za-z0-9() -]+$"
-            placeholder=" "
-          ></input>
-          {formik.touched.description && formik.errors.description ? (
-            <div className="requirement-message">
-              {formik.errors.description}
-            </div>
-          ) : null}
-          <label htmlFor="description">Description:</label>
-        </div>
-
-        <div className="button_container">
-          <input type="submit" value="Submit"></input>
-        </div>
-      </form>
     </>
   );
 };

@@ -49,55 +49,62 @@ const LoginForm = () => {
   });
   return (
     <>
-      <form action="#" method="post" onSubmit={formik.handleSubmit}>
-        <div className="input-field">
-          <input
-            type="email"
-            id="emailAddress"
-            name="emailAddress"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.emailAddress}
-            required
-            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-            placeholder=" "
-          ></input>
-          {formik.touched.emailAddress && formik.errors.emailAddress ? (
-            <div className="requirement-message">
-              {formik.errors.emailAddress}
-            </div>
-          ) : null}
-          <label htmlFor="emailAddress">Email Address:</label>
+      <div className="card">
+        <div className="header">
+          <h1>Login</h1>
         </div>
+        <form action="#" method="post" onSubmit={formik.handleSubmit}>
+          <div className="input-field">
+            <input
+              type="email"
+              id="emailAddress"
+              name="emailAddress"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.emailAddress}
+              required
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              placeholder=" "
+            ></input>
+            {formik.touched.emailAddress && formik.errors.emailAddress ? (
+              <div className="requirement-message">
+                {formik.errors.emailAddress}
+              </div>
+            ) : null}
+            <label htmlFor="emailAddress">Email Address:</label>
+          </div>
 
-        <div className="input-field">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            required
-            pattern="^[a-zA-Z0-9!@#$%^&*()_+=[\]{}|;:,.<>?/\\~-]*$"
-            placeholder=" "
-          ></input>
-          {formik.touched.password && formik.errors.password ? (
-            <div className="requirement-message">{formik.errors.password}</div>
-          ) : null}
-          <label htmlFor="password">Password:</label>
-        </div>
+          <div className="input-field">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              required
+              pattern="^[a-zA-Z0-9!@#$%^&*()_+=[\]{}|;:,.<>?/\\~-]*$"
+              placeholder=" "
+            ></input>
+            {formik.touched.password && formik.errors.password ? (
+              <div className="requirement-message">
+                {formik.errors.password}
+              </div>
+            ) : null}
+            <label htmlFor="password">Password:</label>
+          </div>
 
-        <div className="button_container">
-          <input type="submit" value="Submit"></input>
-        </div>
-        {isclicked && !isLogin ? (
-          <div className="wrong_login">Wrong Login Info</div>
-        ) : null}
-        {isclicked && isLogin ? (
-          <div className="right_login">Login Successfully</div>
-        ) : null}
-      </form>
+          <div className="button_container">
+            <input type="submit" value="Submit"></input>
+          </div>
+          {isclicked && !isLogin ? (
+            <div className="wrong_login">Wrong Login Info</div>
+          ) : null}
+          {isclicked && isLogin ? (
+            <div className="right_login">Login Successfully</div>
+          ) : null}
+        </form>
+      </div>
     </>
   );
 };
