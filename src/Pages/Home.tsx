@@ -8,19 +8,25 @@ import "./Home.css";
 import { List, ListItem } from "@mui/material";
 import { CategoryType } from "../types/categoryType";
 import { getAllCategory } from "../api/categoryApi";
+import { getAllPosts } from "../api/postApi";
+import { PostsType } from "../types/postType";
+import postCard from "../components/postCard";
 
 const ProductSection = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  align-content: flex-end;
-  align-items: center;
+  row-gap: 1em;
+  column-gap: 4em;
+  /* align-content: flex-end;
+  align-items: center; */
 `;
 
 const Home = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [categories, setCategories] = useState<CategoryType[]>([]);
+  const [posts, setPosts] = useState<PostsType[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,6 +40,16 @@ const Home = () => {
       }
     };
 
+    const fetchAds = async () => {
+      try {
+        const getAds = await getAllPosts();
+        setPosts(getAds.data.data);
+      } catch (error) {
+        console.error("Error fetching Ads:", error);
+      }
+    };
+
+    fetchAds();
     fetchProducts();
   }, []);
 
@@ -123,13 +139,17 @@ const Home = () => {
               ))}
             </List>
             <div className="Ads-Container">
-              <div className="Ad-Box">AD 1</div>
-              <div className="Ad-Box">AD 2</div>
-              <div className="Ad-Box">AD 3</div>
+              {/* {posts.map((post) => (
+                // <postCard
+                // image={post.image}
+                // userID={post.userID}
+                // description={post.description}
+                // />
+              ))} */}
             </div>
           </div>
           <div className="Main-Content">
-            <div className="Mobile-Nav-Container">
+            {/* <div className="Mobile-Nav-Container">
               <div className="dropdown-Mobile" style={{ float: "left" }}>
                 <button onClick={() => {}} className="dropbtn1">
                   Categories
@@ -176,7 +196,7 @@ const Home = () => {
                   <a href="#">By Newest</a>
                 </div>
               </div>
-            </div>
+            </div> */}
             <ProductSection>
               {products &&
                 products.map((product) => (

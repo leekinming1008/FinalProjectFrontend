@@ -43,7 +43,8 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="sticky">
-      <Container className="NavBarContainer" maxWidth="xl">
+      {/* <Container className="NavBarContainer" maxWidth="xl"> */}
+      <div className="NavBarContainer">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -180,7 +181,9 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
         </Toolbar>
-      </Container>
+      </div>
+
+      {/* </Container> */}
     </AppBar>
   );
 }

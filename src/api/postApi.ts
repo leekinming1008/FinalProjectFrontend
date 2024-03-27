@@ -1,4 +1,5 @@
 import axios from "axios";
+import { PostsType } from "../types/postType";
 
 const POST_ENDPOINT =import.meta.env.VITE_BASE_URL + "/api/post";
 
@@ -6,12 +7,7 @@ const POST_ENDPOINT =import.meta.env.VITE_BASE_URL + "/api/post";
 export const getAllPosts = () => axios.get(POST_ENDPOINT);
 
 //Create new post
-interface PostsType {
-    image: string;
-    description: string;
-    category: string;
-    userID: string;
-}
+
 export const createPost = (postData: PostsType) => axios.post(POST_ENDPOINT, postData);
 
 //Get post by userID
