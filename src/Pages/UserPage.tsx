@@ -23,7 +23,7 @@ const UserPage = () => {
     >
       <div className="User-Page-Container-Desktop">
         <img
-          src="img/User-Page-Top-Banner-Desktop.jpg"
+          src="../assets/User-Page-Top-Banner-Desktop.jpg"
           alt=""
           className="User-Page-Banner"
         />
