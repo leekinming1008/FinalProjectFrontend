@@ -2,14 +2,35 @@ import "./form.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { createPost } from "../api/postApi";
+import { CategoryType } from "../types/categoryType";
+import { useEffect, useState } from "react";
+import { getAllCategory } from "../api/categoryApi";
+import { userStore } from "../store/userStore";
 
 const PostForm = () => {
+  const { userID } = userStore();
+  const [allCategory, setAllCategory] = useState<CategoryType[]>([]);
+  useEffect(() => {
+    const fatchCategory = async () => {
+      try {
+        const response = await getAllCategory();
+        if (response.status == 200) {
+          setAllCategory(response.data.category);
+        }
+      } catch (err) {
+        console.error("Have error during the fatch category process", err);
+      }
+    };
+    fatchCategory();
+    location.reload;
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       image: "",
       description: "",
       category: "",
-      userID: "",
+      userID: userID,
     },
     validationSchema: Yup.object({
       image: Yup.string().url("Must be a valid URL"),
@@ -34,7 +55,7 @@ const PostForm = () => {
       } catch (err) {
         console.error("Failed to add Product", err);
       } finally {
-        resetForm({});
+        // resetForm({});
       }
     },
   });
@@ -83,23 +104,20 @@ const PostForm = () => {
           </div>
 
           <div className="input-field">
-            <input
-              type="text"
-              id="description"
-              name="description"
+            <select
+              name="category"
+              value={formik.values.category}
               onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.description}
-              required
-              pattern="^(?!.*\s{2,})[A-Za-z0-9() -]+$"
-              placeholder=" "
-            ></input>
-            {formik.touched.description && formik.errors.description ? (
-              <div className="requirement-message">
-                {formik.errors.description}
-              </div>
-            ) : null}
-            <label htmlFor="description">Description:</label>
+            >
+              <option value="" label="Select a category">
+                Select a category{" "}
+              </option>
+              {allCategory.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="button_container">

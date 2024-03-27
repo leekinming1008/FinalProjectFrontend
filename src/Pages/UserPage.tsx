@@ -44,7 +44,13 @@ const UserPage = () => {
       </div>
       {userID == selecteduserID && (
         <>
-          <button>Create post</button>
+          <button
+            onClick={() => {
+              nav("/createPost");
+            }}
+          >
+            Create post
+          </button>
           <button
             onClick={() => {
               nav("/createProduct");

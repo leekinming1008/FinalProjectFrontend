@@ -16,6 +16,7 @@ import SignUp from "./Pages/SingUp";
 import EditPage from "./Pages/EditPage";
 import CreateProductPage from "./Pages/CreateProductPage";
 import CreateCommentPage from "./Pages/CreateCommitPage";
+import CreatePostPage from "./Pages/CreatePostPage";
 
 const browserRouter = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const browserRouter = createBrowserRouter([
       {
         path: "/createComment/:selecteduserID",
         element: <CreateCommentPage />,
+      },
+      {
+        path: "/createPost",
+        element: <CreatePostPage />,
       },
       // {
       //   path: "/LoginPage",
