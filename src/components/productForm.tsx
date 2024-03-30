@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
 
-import "./form.css";
+import "../css/form.css";
 import ErrorMessageContainer from "./ErrorMessageContainer";
 import { ProductType } from "../types/productType";
 import { editProduct, getProduct, addProduct } from "../api/productApi";

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getProduct, removeProduct } from "../api/productApi";
 import { ProductType } from "../types/productType";
 import { BeatLoader } from "react-spinners";
-import "./ProductDetails.css";
+import "../css/ProductDetails.css";
 import { userStore } from "../store/userStore";
 
 /*

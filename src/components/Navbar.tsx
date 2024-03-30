@@ -9,7 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "../css/Navbar.css";
 import NavButton from "./NavButton";
 import NavButtonSmaller from "./NavButtonSmaller";
 import { userStore } from "../store/userStore";

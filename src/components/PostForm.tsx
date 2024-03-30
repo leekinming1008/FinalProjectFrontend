@@ -1,4 +1,4 @@
-import "./form.css";
+import "../css/form.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { createPost } from "../api/postApi";

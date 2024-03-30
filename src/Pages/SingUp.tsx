@@ -1,5 +1,5 @@
 import SignUpForm from "../components/SignUpForm";
-import "./LoginPage.css";
+import "../css/LoginPage.css";
 
 const SignupPage = () => {
   return (

@@ -1,4 +1,4 @@
-import "./UserPage.css";
+import "../css/UserPage.css";
 
 /* 
 

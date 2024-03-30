@@ -3,7 +3,7 @@ import ProductCard from "../components/ProductCard";
 import { useEffect, useState } from "react";
 import { getProduct } from "../api/productApi";
 import { ProductType } from "../types/productType";
-import "./Home.css";
+import "../css/Home.css";
 
 const HomePageHeader = styled.h1`
   .Title-No {

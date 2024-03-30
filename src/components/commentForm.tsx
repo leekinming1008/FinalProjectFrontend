@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
-import "./form.css";
+import "../css/form.css";
 import ErrorMessageContainer from "./ErrorMessageContainer";
 import { createComment } from "../api/commentApi";
 import { userStore } from "../store/userStore";
