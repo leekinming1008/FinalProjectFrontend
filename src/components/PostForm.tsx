@@ -53,7 +53,10 @@ const PostForm = () => {
       console.log("Submitted values:", values);
       try {
         const response = await createPost(values);
-        console.log("Product added successfully", response.data);
+        if (response?.status == 201) {
+          console.log("Product added successfully", response.data);
+          alert("You have successfully create an post!! :)");
+        }
       } catch (err) {
         console.error("Failed to add Product", err);
       } finally {

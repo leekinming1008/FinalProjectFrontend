@@ -83,7 +83,6 @@ const ProductForm = () => {
   return (
     <Formik
       initialValues={{
-        _id: "",
         image: "",
         name: "",
         description: "",
@@ -94,6 +93,7 @@ const ProductForm = () => {
       validationSchema={validation}
       onSubmit={async (values, { resetForm }) => {
         try {
+          console.log(values);
           var response;
           if (id) {
             response = await editProduct(id, values);

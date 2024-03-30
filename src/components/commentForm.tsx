@@ -21,7 +21,6 @@ const CommentForm = ({ targetUserID }: CommentFormProps) => {
   return (
     <Formik
       initialValues={{
-        _id: "",
         targetUserID: targetUserID,
         sourceUserID: userID,
         comment: "",

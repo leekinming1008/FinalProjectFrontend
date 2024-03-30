@@ -36,11 +36,13 @@ const SignUpForm = () => {
       address: Yup.string().required("Required"),
     }),
     onSubmit: async (values, { resetForm }) => {
-      console.log("Submitted values:", values);
       try {
         const response = await createUser(values);
-        console.log("Sign Up successfully", response.data);
-        navigate("/login");
+        if (response.status == 201) {
+          console.log("Sign Up successfully", response.data);
+          alert("You have successfully create an accout!! :)");
+          navigate("/login");
+        }
       } catch (err) {
         console.error("Sign Up failed", err);
       } finally {
